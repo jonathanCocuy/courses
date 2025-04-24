@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "nodemon response.js"
+    "dev": "nodemon request-body.js"
   },
   "dependencies": {
     "express": "^5.1.0",
