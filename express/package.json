@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "dev": "nodemon request-body.js"
+    "dev": "nodemon middleware.js"
   },
   "dependencies": {
+    "colors": "^1.4.0",
     "express": "^5.1.0",
     "nodemon": "^3.1.9"
   }
