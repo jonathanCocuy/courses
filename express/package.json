@@ -1,10 +1,11 @@
 {
   "scripts": {
-    "dev": "nodemon middleware.js"
+    "dev": "nodemon settings.js"
   },
   "dependencies": {
     "colors": "^1.4.0",
     "express": "^5.1.0",
+    "morgan": "^1.10.0",
     "nodemon": "^3.1.9"
   }
 }

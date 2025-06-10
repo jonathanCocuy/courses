@@ -1,4 +1,5 @@
 const express = require("express");
+const morgan =  require("morgan")
 const colors = require("colors");
 const app = express();
 const PORT = 3000;
@@ -11,13 +12,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/profile", (req, res) => {
-  setTimeout(() => {
-    console.log("ESTAMOS EN PROFILE".green);
-    res.send("PROFILE PAGE");
-  }, 2000);
-});
-
 app.get("/about", (req, res) => {
   setTimeout(() => {
     console.log("ESTAMOS EN ABOUT".green);
@@ -25,6 +19,21 @@ app.get("/about", (req, res) => {
   }, 2000);
 });
 
+// __Evita el acceso al dashboard hasta que se complete la validación del QUERY, colocamos el middleware después de las demás rutas para que solo afecte a las siguientes, sin interferir con las rutas anteriores__ //
+
+app.use((req, res, next) => {
+  if (req.query.login === "jonathan") {
+    next()
+  } else {
+    res.send("NO AUTORIZADO")
+  }
+})
+
+app.get("/dashboard", (req, res) => {
+  console.log("ESTAMOS EN DASHBOARD".green);
+  res.send("DASHBOARD PAGE");
+});
+
 app.listen(PORT, () => {
-  console.log("Server MIDDLEWAR on PORT".cyan, PORT);
+  console.log("Server MIDDLEWARE on PORT".cyan, PORT);
 });
